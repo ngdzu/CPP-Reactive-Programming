@@ -4,18 +4,21 @@
 
 #include <array>
 
-int main() {
+int main()
+{
 
-  auto values = rxcpp::observable<>::range(1, 12).
+  auto values = rxcpp::observable<>::range(1, 12).filter([](int v) {
+                                                   return v % 2 == 0;
+                                                 })
+                    .map([](int x) {
+                      return x * x;
+                    });
 
-                filter([](int v){
- return v % 2 == 0;
-}).map([](int x) {return x*x;}); 
-  values.
-subscribe(
- [](int v){printf("OnNext: %d\n", v);},
-  
-                [](){printf("OnCompleted\n");});
-
-
+  values.subscribe(
+      [](int v) {
+        printf("OnNext: %d\n", v);
+      },
+      []() {
+        printf("OnCompleted\n");
+      });
 }

@@ -3,22 +3,18 @@
 
 #include "rxcpp/rx-test.hpp"
 #include <iostream>
-int main() {
-     auto scheduler = rxcpp::observe_on_new_thread();
-   
-     auto period = std::chrono::milliseconds(1);
-   
-     auto values = rxcpp::observable<>::timer(period, scheduler).
-            finally([](){
-            printf("The final action\n");
-        });    
+int main()
+{
+    auto scheduler = rxcpp::observe_on_new_thread(); // get the scheduler
 
-    values.
-as_blocking().              
-      subscribe(
- [](int v){printf("OnNext: %d\n", v);},
-  
-                 [](){printf("OnCompleted\n");});
+    auto period = std::chrono::milliseconds(1);
 
-   
+    auto values = rxcpp::observable<>::timer(period, scheduler).finally([]() {
+        printf("The final action\n");
+    });
+
+    values.as_blocking().subscribe(
+        [](int v) { printf("OnNext: %d\n", v); },
+
+        []() { printf("OnCompleted\n"); });
 }

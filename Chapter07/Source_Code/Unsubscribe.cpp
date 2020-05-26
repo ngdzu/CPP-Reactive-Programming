@@ -12,7 +12,7 @@ int main() {
         [&subs](int v){
             printf("OnNext: %d\n", v);
             if (v == 6)
-                subs.unsubscribe(); //-- Stop recieving events
+                subs.unsubscribe(); //-- Stop recieving events, We won't have onCompleted
         },
         [](){printf("OnCompleted\n");});
 

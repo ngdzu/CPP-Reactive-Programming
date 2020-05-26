@@ -8,7 +8,7 @@ int main() {
     int count = 0;
     auto values = rxcpp::observable<>::range(1, 20).
         scan(
-            0,
+            7, // initial value of seed
             [&count](int seed, int v){
                 count++;
                 return seed + v;

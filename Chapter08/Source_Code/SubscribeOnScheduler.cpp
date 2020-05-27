@@ -1,4 +1,9 @@
 //-------- SubscribeOnScheduler.cpp
+
+
+// NOTE before and after subscribe_on(), exec in a new thread
+
+
 #include "rxcpp/rx.hpp"
 int main(){
     //------- Print the main thread id
@@ -12,7 +17,7 @@ int main(){
             printf("Map %d : %d\n", std::this_thread::get_id(),i); 
             return i;
         }).
-        take(5).subscribe_on(rxcpp::synchronize_new_thread()).
+        take(5).subscribe_on(rxcpp::synchronize_new_thread()). // before and after subscribe_on(), exec in a new thread
         subscribe([&](int i){
            printf("Subs %d : %d\n", std::this_thread::get_id(),i); 
         });

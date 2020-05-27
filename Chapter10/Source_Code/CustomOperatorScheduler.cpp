@@ -11,6 +11,8 @@ auto generateObservable(Duration durarion) {
 }
 
 int main() {
+    printf("main thread -- %d\n", std::this_thread::get_id());
+
     //-------- Create a coordination
     auto coordination = rxcpp::observe_on_event_loop();
     //-------- Instantiate a coordinator and create a worker
@@ -32,6 +34,7 @@ int main() {
     worker.schedule([&](const rxcpp::schedulers::schedulable&) {
         values.connect();
     });
+    
     //------- Add blocking subscription to see results
     values.as_blocking().subscribe();
     return 0;

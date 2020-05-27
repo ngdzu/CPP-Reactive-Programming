@@ -4,7 +4,7 @@
 
 int main(int argc, char *argv[]) {
 
-    rxcpp::subjects::behavior<int> behsubject(0);
+    rxcpp::subjects::behavior<int> behsubject(3); // 3 is initial value
 
     auto observable = behsubject.get_observable();
     observable.subscribe( [] ( int v ) {

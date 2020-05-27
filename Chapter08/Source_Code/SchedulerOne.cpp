@@ -8,6 +8,7 @@ int main()
     auto coordination = rxcpp::serialize_new_thread();
  
     //------- Create a Worker instance   
+    // create_coordinator() will create a new worker
     auto worker = coordination.create_coordinator().get_worker();
 
     auto sub_action = rxcpp::schedulers::make_action([] 

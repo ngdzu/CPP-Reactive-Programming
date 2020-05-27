@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
  auto eventloop = rxcpp::observe_on_event_loop();
  //----- Create a Cold Observable
  auto values = rxcpp::observable<>::interval(
-               std::chrono::seconds(2)).take(2);  
+               std::chrono::seconds(2)).take(20);  
  //----- Subscribe Twice
  values.
     subscribe_on(eventloop).
@@ -23,11 +23,12 @@ int main(int argc, char *argv[]) {
         [](){printf("[2] onCompleted\n");});
 
  //---- make a blocking subscription to see the results
- values.as_blocking().subscribe();
+ // uncomment this to see from start to finish
+//  values.as_blocking().subscribe();
 
- //----------- Wait for Two Seconds
+ // The more time we wait, the more data will be printed out
  rxcpp::observable<>::timer(
-       std::chrono::milliseconds(2000)).
+       std::chrono::milliseconds(10000)).
        subscribe([&](long){ });
 
 }

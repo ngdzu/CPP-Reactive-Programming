@@ -310,15 +310,15 @@ class DirectoryEmitter
 
 int main(int argc, char *argv[]) {
 
-  //TestVisitor("D:\\Java");
+  TestVisitor("D:\\Data\\Pictures");
 	
-  //list<FileInformation> rs = GetAllFiles("D:\\JAVA");
+//   list<FileInformation> rs = GetAllFiles("D:\\JAVA");
 
-  //for( auto& as : rs )
-  //  cout << as.name << endl; 
+//   for( auto& as : rs )
+//    cout << as.name << endl; 
 
-  DirectoryEmitter emitter("D:\\JAVA");
-  emitter.Trigger();
+//   DirectoryEmitter emitter("D:\\JAVA");
+//   emitter.Trigger();
 
   return 0;
 

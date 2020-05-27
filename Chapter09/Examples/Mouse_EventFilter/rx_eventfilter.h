@@ -2,6 +2,7 @@
 #define RX_EVENTFILTER_H
 
 #include <rxcpp/rx.hpp>
+#include <QObject>
 #include <QEvent>
 namespace rxevt
 {

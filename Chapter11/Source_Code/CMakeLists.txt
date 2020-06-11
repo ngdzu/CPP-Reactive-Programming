@@ -7,6 +7,7 @@ enable_testing()
 add_executable(DirReact DirReact.cpp)
 add_executable(ActiveObject ActiveObject.cpp)
 add_executable(CellPattern CellPattern.cpp)
+add_executable(EventBus EventBus.cpp)
 
 
 
@@ -21,6 +22,7 @@ target_include_directories(tutorial_compiler_flags
 target_link_libraries(DirReact PUBLIC tutorial_compiler_flags)
 target_link_libraries(ActiveObject PUBLIC tutorial_compiler_flags)
 target_link_libraries(CellPattern PUBLIC tutorial_compiler_flags)
+target_link_libraries(EventBus PUBLIC tutorial_compiler_flags)
 
 
 

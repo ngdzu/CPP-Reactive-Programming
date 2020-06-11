@@ -2,8 +2,9 @@
 // A Simple Program to demonstrate 
 // the usage of libcurl library
 //
-#include <stdio.h>
+// #include <stdio.h>
 #include <curl/curl.h>
+#include <iostream>
 ///////////////////////
 // Entrypoint for the program
 // 
@@ -34,9 +35,12 @@ int main(void)
     
     if(res != CURLE_OK) {
       //----- if error, print the error on console
-      cout << "curl_easy_perform() failed: "
-              << curl_easy_strerror(res) << endl;
+      std::cout << "curl_easy_perform() failed: "
+              << curl_easy_strerror(res) << std::endl;
     }
+	else 
+		std::cout << "curl_easy_perform() status: "
+		<< curl_easy_strerror(res) << std::endl;
     curl_easy_cleanup(curl);
   }
   return 0;

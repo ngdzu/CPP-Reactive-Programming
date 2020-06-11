@@ -21,7 +21,7 @@ using namespace rxcpp::rxs;
 // Kirk Shoop's Twitter Analysis app
 //
 #include "rxcurl.h"
-using namespace rxcurl;
+// using namespace rxcurl;
 
 
 rxcurl::rxcurl factory;
@@ -32,8 +32,8 @@ string HttpCall( string url ,
                string  body  )
 {        
   // auto factory = create_rxcurl();
-     auto request  = factory.create(http_request{url,method,headers,body}) |
-            rxo::map([](http_response r){
+     auto request  = factory.create(rxcurl::http_request{url,method,headers,body}) |
+            rxo::map([](rxcurl::http_response r){
                 return r.body.complete;
             });     
      
@@ -62,7 +62,7 @@ int main() {
      ///////////////////////////////////
      // set the url and create the rxcurl object
      string url = "http://localhost:34567/DBDEMO/";
-     factory = create_rxcurl();
+     factory = rxcurl::create_rxcurl();
      /////////////////////////////////
      // default header values
      std::map<string,string> headers;
